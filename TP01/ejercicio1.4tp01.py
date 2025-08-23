@@ -1,3 +1,8 @@
+#Creamos la clase Vuelo (codigo, origen, destino, fecha, precio)
+# Tareas:
+# 1. Creá 6 vuelos con orígenes/destinos, fechas y precios distintos en una lista con un for
+# 2. Mostrá los códigos de los vuelos con origen EZE y precio < 200.000 pesos
+
 class Vuelo:
     def __init__(
         self, codigo: str, origen: str, destino: str, fecha: str, precio: float

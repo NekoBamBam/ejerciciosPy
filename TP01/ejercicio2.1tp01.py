@@ -1,3 +1,9 @@
+# Estamos desarrollando un sistema para un supermercado tenemos que definir la clase Articulo (nombre, precio, stock, categoría)
+# Tareas:
+# 1. Crear una lista con 5 artículos.
+# 2. Construir otra lista con los nombres de los artículos con precio > 4000 usando for y append.
+# 3. Cambiar el precio de uno de ellos con set_precio y muestra el cambio
+
 class Articulo:
     def __init__(self, nombre: str, precio: float, stock: int, categoria: str) -> None:
         self.nombre = nombre
@@ -17,16 +23,16 @@ def get_stock(self) -> int:
 def get_categoria(self) -> str:
     return self.categoria
 
-def set_nombre(self,nuevo_nombre: str) -> None:
+def set_nombre(self, nuevo_nombre: str) -> None:
     self.nombre = nuevo_nombre
 
-def set_precio(self,nuevo_precio: float) -> None:
+def set_precio(self, nuevo_precio: float) -> None:
     self.precio = nuevo_precio
 
-def set_stock(self,nuevo_stock: int) -> None:
+def set_stock(self, nuevo_stock: int) -> None:
     self.stock = nuevo_stock
 
-def set_categoria(self,nuevo_categoria: str) -> None:
+def set_categoria(self, nuevo_categoria: str) -> None:
     self.categoria = nuevo_categoria
 
 articulos = [
@@ -42,9 +48,7 @@ for a in articulos:
         nombres_caros.append(a.get_nombre())
 print("Caros (>4000):", nombres_caros)
 
-#cambiar el precio de uno y mostrar el cambio
-print("Antes:",articulos[0].get_nombre(),
-articulos[0].get_precio())
+# cambiar el precio de uno y mostrar el cambio
+print("Antes:", articulos[0].get_nombre(), articulos[0].get_precio())
 articulos[0].set_precio(6000.0)
-print("Despues:", articulos[0].get_nombre(),
-articulos[0].get_precio())
+print("Despues:", articulos[0].get_nombre(), articulos[0].get_precio())

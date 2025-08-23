@@ -1,3 +1,11 @@
+#Estamos desarrollando un sistema para una aerolínea y definimos la clase Vuelo 
+#(codigo, origen, destino, fecha, precio). 
+# Tareas:
+# 1. Cargar 6 vuelos en una lista, usamos la misma lista del ejercicio1_4.py
+# 2. Construir una lista con los códigos de vuelos desde "EZE" y precio < 200000 usando for.
+# 3. Encontrar el más barato hacia un destino (p. ej. "COR") con for (no min).
+# 4. Ajustar el precio de uno con set_precio y volver a calcular
+
 class Vuelo:
     def __init__(self, codigo: str, origen: str, destino: str, fecha: str, precio: float) -> None:
         self.codigo = codigo

@@ -1,3 +1,8 @@
+#Crea una clase Dispositivo con los siguientes atributos: marca, modelo, anio, precio
+# Tareas
+# 1. Creá 6 dispositivos con año y precio guardándolo en una lista
+# 2. Mostrá la lista de dispositivos.
+
 class Dispositivo:
     def __init__(self, marca: str, modelo: str, anio: int, precio: float) -> None:
         self.marca = marca

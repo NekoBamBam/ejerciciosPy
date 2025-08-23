@@ -1,3 +1,8 @@
+#Definí la clase Cancion con los atributos: titulo, artista, duración_seg, genero
+# Tareas:
+# 1. Creá 5 canciones de géneros y duraciones variadas.
+# 2. Mostrá los títulos de las canciones cuyo género sea Rock (o el que elijas).
+
 class Cancion:
     def __init__(
         self, titulo: str, artista: str, duracion_seg: int, genero: str
