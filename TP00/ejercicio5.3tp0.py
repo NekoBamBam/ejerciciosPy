@@ -1,3 +1,5 @@
+#Calcula área (base*altura) y perímetro (2*(base+altura)).
+
 base = float(input("Ingrese la base del rectangulo: "))
 altura = float(input("Ingrese la altura del rectangulo: "))
 if base > 0 and altura > 0:

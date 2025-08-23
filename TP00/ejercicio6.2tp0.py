@@ -1,3 +1,10 @@
+#Muestra menú: 
+# 1) Círculo 
+# 2) Triángulo 
+# 3) Rectángulo 
+# 0) Salir 
+# Según elección, pide los parámetros (validando > 0) y calcula área y perímetro. 
+
 import math
 
 def menu():

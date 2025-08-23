@@ -1,3 +1,5 @@
+#Calcula área ((base*altura)/2). 
+
 base = float(input("Ingrese la base del triangulo: "))
 altura = float(input("Ingrese la altura del triangulo: "))
 if base > 0 and altura > 0:

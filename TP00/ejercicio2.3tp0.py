@@ -1,3 +1,5 @@
+#Pide al usuario un entero n y muestra su tabla de multiplicar del 1 al 10.
+
 tabla = int(input("Ingrese un numero entero: "))
 multiplicar = (
     tabla * 1,

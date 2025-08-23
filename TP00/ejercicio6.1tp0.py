@@ -1,3 +1,14 @@
+#Usa match para ofrecer un menú: 
+# 1) Edad 
+# 2) Nombre 
+# 3) Carrera 
+# 0) Salir 
+# Si elige: 
+# Edad: pide edad y valida que esté entre 1 y 119. 
+# Nombre: pide nombre y valida que no esté vacío ni solo espacios. 
+# Carrera: pide carrera y valida que no esté vacía. 
+# 0: Muestra el dato o mensaje de error y vuelve al menú. 
+
 def menu(): 
     while True: 
         print(""" 
