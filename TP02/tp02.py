@@ -1,5 +1,12 @@
-import re 
+import re
 from datetime import datetime
+
+
+def pasar_a_numero(valor) -> float:
+    try:
+        return float(valor)
+    except (TypeError, ValueError):
+        raise ValueError("El valor debe ser un número válido")
 
 
 def solo_digitos(s: str) -> str:
