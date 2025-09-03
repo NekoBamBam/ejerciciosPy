@@ -1,4 +1,3 @@
-
 class Cuenta:
     def __init__(
         self,
@@ -39,4 +38,3 @@ class Cuenta:
     @property
     def saldo(self):
         return self.__saldo
-

@@ -1,4 +1,4 @@
-import re
+import re 
 from datetime import datetime
 
 
@@ -78,7 +78,6 @@ class Cuenta:
             max(0.0, saldo),
         )
 
-
     @property
     def numero_cuenta(self):
         return self.__numero_cuenta
@@ -103,7 +102,6 @@ class Cuenta:
     def saldo(self):
         return self.__saldo
 
-
     def imprimir_datos(self):
         print(f"Nombre del titular: {self.__titular} - CUIL: {self.__cuil}")
         print(
@@ -124,4 +122,25 @@ class Cuenta:
         )
 
 
+class CuentaAhorro(Cuenta):
+    pass
 
+
+class CuentaCorriente(Cuenta):
+    def __init__(
+        self, numero_cuenta, titular, cuil, cbu, alias, saldo=0.0, descubierto=0.0
+    ) -> None:
+        super().__init__(numero_cuenta, titular, cuil, cbu, alias, saldo)
+        self.__descubierto = self.__validar_descubierto(descubierto)
+
+    @staticmethod
+    def __validar_descubierto(valor) -> float:
+        v = pasar_a_numero(valor)
+        if v < 0.0:
+            print("El descubierto no puede ser negativo")
+            v = 0.0
+        return v
+
+    @property
+    def descubierto(self) -> float:
+        return self.__descubierto
