@@ -1,23 +1,26 @@
 from cliente import Cliente
 
-from helpers import ahora_str, pasar_a_numero 
+from helpers import ahora_str, pasar_a_numero
 
 from validaciones_cuenta import (
     pedir_alias_hasta_valido,
     pedir_cbu_hasta_valido,
     pedir_numero_cuenta_hasta_valido,
     pedir_saldo_inicial_hasta_valido,
-    pedir_monto_hasta_valido
+    pedir_monto_hasta_valido,
 )
 
 
 class Cuenta:
-    def __init__(self, numero, cbu, alias, cliente: Cliente, saldo=0.0) -> None:
+    def __init__(
+        self, numero, cbu, alias, numero_cuenta, cliente: Cliente, saldo=0.0
+    ) -> None:
         self.__numero_cuenta = pedir_numero_cuenta_hasta_valido(numero)
         self.__cbu = pedir_cbu_hasta_valido(cbu)
         self.__alias = pedir_alias_hasta_valido(alias)
         self.__cliente = cliente
         self.__saldo = pedir_saldo_inicial_hasta_valido(saldo)
+        
 
     # --- getters ---
     @property
@@ -48,6 +51,10 @@ class Cuenta:
     def saldo_formateado(self):
         return f"${self.__saldo:.2f}"
 
+    @property
+    def numero_cuenta(self):
+        return self.__numero_cuenta
+
     @alias.setter
     def alias(self, valor):
         self.__alias = valor
@@ -55,7 +62,9 @@ class Cuenta:
     def informe_datos(self):
         print("Consulta de datos:")
         print(f"Cliente: {self.cliente.nombre}")
-        print(f"N°: {self.numero_cuenta_formateado} - Alias: {self.alias} - CBU: {self.cbu}")
+        print(
+            f"N°: {self.numero_cuenta_formateado} - Alias: {self.alias} - CBU: {self.cbu}"
+        )
 
     def __imprimir_movimiento(self, ch, monto):
         motivo = input("Motivo de la operación: ").strip()
@@ -86,14 +95,14 @@ class Cuenta:
             f"Alias: {self.__alias}\n"
             f"Cliente: {self.cliente.nombre_formateado}\n"
             f"Saldo: {self.saldo_formateado}"
-            )
+        )
 
 
 class CuentaAhorro(Cuenta):
 
     @property
     def numero_cuenta_formateado(self):
-        return f"CA $ {super().self.__numero_cuenta}"
+        return f"CA $ {self.__numero_cuenta}"
 
 
 class CuentaCorriente(Cuenta):
@@ -142,15 +151,23 @@ class CuentaCorriente(Cuenta):
         return True
 
     def detalle_producto(self):
-        return f"Producto: Cuenta Corriente (descubierto {self.descubierto_formateado})."
+        return (
+            f"Producto: Cuenta Corriente (descubierto {self.descubierto_formateado})."
+        )
 
     def informe_datos(self):
         print("Consulta de datos:")
         print(f"Cliente: {self.cliente.nombre_formateado}")
         print(f"CUIL: {self.cliente.cuil_formateado}")
-        print(f"N°: {self.numero_cuenta_formateado} - Alias: {self.alias} - CBU: {self.cbu}")
+        print(
+            f"N°: {self.numero_cuenta_formateado} - Alias: {self.alias} - CBU: {self.cbu}"
+        )
 
     def ver_saldo(self):
         print("#Consulta de saldo:")
-        print(f"#Cliente: {self.cliente.nombre_formateado()} – N°: {self.numero_cuenta_formateado}")
-        print(f"#Saldo: {self.saldo_formateado} – Descubierto: {self.descubierto_formateado}")
+        print(
+            f"#Cliente: {self.cliente.nombre_formateado} – N°: {self.numero_cuenta_formateado}"
+        )
+        print(
+            f"#Saldo: {self.saldo_formateado} – Descubierto: {self.descubierto_formateado}"
+        )
