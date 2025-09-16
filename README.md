@@ -6,4 +6,4 @@ El objetivo es compartir código claro, ejemplos prácticos y ejercicios que sir
 ---
 
 ## 📚 Facultad
-<img src="/src/logo-utn.png" alt="Logo de la Facultad" width="200">
+<img src="src/logo-utn.png" alt="Logo de la Facultad" width="200">
