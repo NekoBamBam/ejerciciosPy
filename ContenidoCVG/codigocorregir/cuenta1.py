@@ -8,6 +8,7 @@ from validaciones_cuenta import (
     pedir_numero_cuenta_hasta_valido,
     pedir_saldo_inicial_hasta_valido,
     pedir_monto_hasta_valido,
+    pedir_motivo_hasta_valido,
 )
 
 
@@ -20,6 +21,7 @@ class Cuenta:
         self.__alias = pedir_alias_hasta_valido(alias)
         self.__cliente = cliente
         self.__saldo = pedir_saldo_inicial_hasta_valido(saldo)
+        self._movimiento: list[Movimiento] = []
         
 
     # --- getters ---
@@ -77,6 +79,7 @@ class Cuenta:
     def depositar(self, monto) -> bool:
         mv = pedir_monto_hasta_valido(monto)
         self.__saldo += mv
+        self._movimiento.append(Movimiento(ahora_str(),mv,"DEPOSITO",""))
         self.__imprimir_movimiento("+", mv)
         return True
 
@@ -85,8 +88,10 @@ class Cuenta:
         if mv > self.__saldo:
             print("Fondos insuficientes.")
             return False
+        motivo = pedir_motivo_hasta_valido(input("Motivo(1...20):"))
         self.__saldo -= mv
-        self.__imprimir_movimiento("-", mv)
+        self._movimiento.append(Movimiento(ahora_str(),mv,"EXTRAER",motivo))
+        self.__imprimir_movimiento("-", mv, motivo)
         return True
 
     def __str__(self) -> str:
@@ -96,6 +101,29 @@ class Cuenta:
             f"Cliente: {self.cliente.nombre_formateado}\n"
             f"Saldo: {self.saldo_formateado}"
         )
+    def ver_movimiento(self):
+        print("=== MOVIMIENTOS ===")
+        if not self._movimiento:
+            print("No hay movimientos registrados.")
+            return
+        print(f"{'fecha y hora':20s} | {'Importe':>12s} | {'Motivo':>20s}")
+        print("-" * 60)
+        for m in self._movimiento:
+            signo = "+" if m.tipo.startswith("DEP") else "-"
+            print(f"{m.fecha:20s} | {signo}{m.monto:11.2f} | {m.motivo:>}")
+    
+class Movimiento:
+    __slots__ = ("fecha","monto","tipo","motivo")
+
+    def __init__(self,fecha:str, monto:float,tipo:str,motivo:str)
+        self.fecha = fecha
+        self.monto = float(monto)
+        self.tipo = tipo.upper()
+        self.motivo = motivo
+
+    def __str__(self) -> str:
+        signo = "+" if self.tipo.startswith("DEP") else "-"
+        return f"{self.fecha} | {self.tipo:11s} | {signo}${self.monto:.2f} | {self.motivo}"
 
 
 class CuentaAhorro(Cuenta):
