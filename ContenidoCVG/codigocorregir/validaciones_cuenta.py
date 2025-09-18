@@ -64,6 +64,14 @@ def pedir_cbu_hasta_valido(valor=None) -> str:
     return cbu
 
 
+def pedir_motivo_hasta_valido(valor=None) -> str:
+    motivo = limpiar_texto(valor)
+    while not (1 <= len(motivo) <= 20):
+        print("Motivo inválido (1 a 20 caracteres).")
+        motivo = limpiar_texto(input("Vuelva a intentarlo: "))
+    return motivo
+
+
 def pedir_alias_hasta_valido(valor=None) -> str:
     alias = limpiar_texto(valor)
     while not es_alias_valido(alias):

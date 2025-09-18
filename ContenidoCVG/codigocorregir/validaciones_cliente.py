@@ -96,7 +96,7 @@ def pedir_nombre_hasta_valido(valor=None) -> str:
         print("Nombre inválido.")
         nombre = input("Vuelva a intentarlo: ")
         nombre = colapsar_espacios(limpiar_texto(nombre))
-    return nombre.upper()
+    return nombre.title()
     # Se devuelve con la primera letra de cada palabra en mayúscula
 
 
@@ -110,7 +110,7 @@ def pedir_cuil_hasta_valido(valor=None) -> str:
 
 
 def pedir_mail_hasta_valido(valor=None) -> str:
-    mail = es_mail_valido(limpiar_texto(valor))
+    mail = limpiar_texto(valor)
     while not es_mail_valido(mail):
         print("Mail inválido.")
         mail = limpiar_texto(input("Vuelva a intentarlo: "))

@@ -9,9 +9,18 @@ def construir_cliente():
     tipo = input("Elegí tipo (1/2): ").strip()
 
     if tipo == "2":
-        return Empresa(mail="",cuil="", telefono="", direccion="", nombre_fantasia="", nombre_juridico="")
+        return Empresa(
+            nombre_juridico="",
+            cuil="",
+            mail="",
+            telefono="",
+            direccion="",
+            nombre_fantasia="",
+        )
     else:
-        return PersonaFisica(mail="",cuil="", telefono="", direccion="", nombre="", dni="")
+        return PersonaFisica(
+            nombre="", cuil="", mail="", telefono="", direccion="", dni=""
+        )
 
 
 def construir_cuenta(cliente):
@@ -38,7 +47,7 @@ def construir_cuenta(cliente):
 def menu_operaciones(cuenta):
     print("\n>>> Cuenta creada.")
     print(cuenta)
-    print(cuenta.informe_datos())
+    (cuenta.informe_datos())
 
     while True:
         print("\n=== MENÚ OPERACIONES ===")
@@ -55,7 +64,7 @@ def menu_operaciones(cuenta):
         print()
 
         if op == "1":
-            cuenta.ver_datos_cuenta()
+            cuenta.informe_datos()
         elif op == "2":
             cuenta.ver_saldo()
         elif op == "3":
@@ -66,7 +75,7 @@ def menu_operaciones(cuenta):
             cuenta.extraer(monto)
         elif op == "5":
             nuevo = input("Nuevo alias: ")
-            cuenta.cambiar_alias(nuevo)
+            cuenta.cuenta.alias = nuevo
         elif op == "6" and hasattr(cuenta, "cambiar_descubierto"):
             nuevo = input("Nuevo descubierto: ")
             cuenta.cambiar_descubierto(nuevo)

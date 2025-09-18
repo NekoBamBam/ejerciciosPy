@@ -22,7 +22,7 @@ class Cliente:
 
     @property
     def nombre_formateado(self):
-        return " ".join(self.__nombre.split()).capitalize()
+        return " ".join(self.__nombre.split()).title()
 
     @property
     def cuil(self):
@@ -46,7 +46,7 @@ class Cliente:
 
     @property
     def direccion_formateado(self):
-        return " ".join(self.__direccion.split()).lower()
+        return " ".join(self.__direccion.split()).title()
 
     @nombre.setter
     def nombre(self, valor):
@@ -89,8 +89,8 @@ class PersonaFisica(Cliente):
         print(f"nombre: {self.nombre_formateado}")
         print(f"dni: {self.__dni}")
         print(f"cuil: {self.cuil_formateado}")
-        print(f"mail: {self.__mail}")
-        print(f"tel: {self.__telefono}")
+        print(f"mail: {self.mail}")
+        print(f"tel: {self.telefono}")
         print(f"dir: {self.direccion_formateado}")
 
     def __str__(self) -> str:
@@ -125,10 +125,10 @@ class Empresa(Cliente):
         print(f"nombre fantasía: {self.nombre_fantasia}")
         print(f"Nombre juridico: {self.nombre_formateado}")
         print(f"cuil: {self.cuil_formateado}")
-        print(f"mail: {self.__mail}")
-        print(f"tel: {self.__telefono}")
+        print(f"mail: {self.mail}")
+        print(f"tel: {self.telefono}")
         print(f"dir: {self.direccion_formateado}")
 
     def __str__(self) -> str:
         base = super().__str__()  # reutiliza contacto + estado [+ alta]
-        return f"{self.__nombre_fantasia}/n{base}"
+        return f"{self.__nombre_fantasia}\n{base}"

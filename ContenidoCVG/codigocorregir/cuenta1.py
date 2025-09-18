@@ -14,7 +14,7 @@ from validaciones_cuenta import (
 
 class Cuenta:
     def __init__(
-        self, numero, cbu, alias, numero_cuenta, cliente: Cliente, saldo=0.0
+        self, numero, cbu, alias,cliente: Cliente, saldo=0.0
     ) -> None:
         self.__numero_cuenta = pedir_numero_cuenta_hasta_valido(numero)
         self.__cbu = pedir_cbu_hasta_valido(cbu)
@@ -72,7 +72,7 @@ class Cuenta:
         motivo = input("Motivo de la operación: ").strip()
         print(
             f"Movimiento ejecutado:\n"
-            f"N° {self.numero_cuenta_formateado} - Cliente: {self.cliente.nombre_formateado()}\n"
+            f"N° {self.numero_cuenta_formateado} - Cliente: {self.cliente.nombre_formateado}\n"
             f"Fecha: {ahora_str()} - Motivo: {motivo} - Monto: {ch}{monto:.2f}"
         )
 
@@ -95,10 +95,11 @@ class Cuenta:
         return True
 
     def __str__(self) -> str:
+        nombre = getattr(self.cliente, "nombre_formateado", str(self.cliente))
         return (
             f"Cuenta N°: {self.__numero_cuenta} - CBU: {self.__cbu}\n"
             f"Alias: {self.__alias}\n"
-            f"Cliente: {self.cliente.nombre_formateado}\n"
+            f"Cliente: {nombre}\n"
             f"Saldo: {self.saldo_formateado}"
         )
     def ver_movimiento(self):
@@ -110,12 +111,12 @@ class Cuenta:
         print("-" * 60)
         for m in self._movimiento:
             signo = "+" if m.tipo.startswith("DEP") else "-"
-            print(f"{m.fecha:20s} | {signo}{m.monto:11.2f} | {m.motivo:>}")
+            print(f"{m.fecha:20s} | {signo}{m.monto:11.2f} | {m.motivo:20s}")
     
 class Movimiento:
     __slots__ = ("fecha","monto","tipo","motivo")
 
-    def __init__(self,fecha:str, monto:float,tipo:str,motivo:str)
+    def __init__(self,fecha:str, monto:float,tipo:str,motivo:str):
         self.fecha = fecha
         self.monto = float(monto)
         self.tipo = tipo.upper()
@@ -130,7 +131,7 @@ class CuentaAhorro(Cuenta):
 
     @property
     def numero_cuenta_formateado(self):
-        return f"CA $ {self.__numero_cuenta}"
+        return f"CA $ {self.numero_cuenta}"
 
 
 class CuentaCorriente(Cuenta):
@@ -175,7 +176,7 @@ class CuentaCorriente(Cuenta):
 
         # Ajuste del saldo y salida formateada (usa helpers de base)
         self._Cuenta__saldo = saldo_actual - mv
-        self._Cuenta__imprimir_movimiento("-", mv)
+        self._Cuenta__imprimir_movimiento("-", mv, "EXTRACCIÓN")
         return True
 
     def detalle_producto(self):
