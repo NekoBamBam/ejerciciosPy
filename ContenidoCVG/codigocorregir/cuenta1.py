@@ -149,7 +149,7 @@ class CuentaCorriente(Cuenta):
 
     @property
     def numero_cuenta_formateado(self):
-        return f"CC $ {self.__numero_cuenta}"
+        return f"CC $ {self.numero_cuenta}"
 
     @property
     def descubierto(self):
