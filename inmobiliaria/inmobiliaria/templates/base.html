@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}Inmobiliaria{% endblock %}</title>
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenido a Inmobiliaria</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="{% url 'gestion_inmuebles:tarea' %}">Tarea</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Inmobiliaria</p>
+    </footer>
+</body>
+
+</html>
