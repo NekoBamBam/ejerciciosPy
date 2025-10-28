@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Inicio — Biblioteca{% endblock %}
+
+{% block navegation %}
+  <li class="nav-item">
+    <a class="btn btn-outline-light" href="{% url 'gestion_libros:index_libros' %}">LIBROS</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-outline-light" href="{% url 'gestion_autores:index_autores' %}">AUTORES</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-outline-light" href="{% url 'gestion_prestamos:index_prestamos' %}">PRÉSTAMOS</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-outline-light" href="{% url 'gestion_socios:index_socios' %}">SOCIOS</a>
+  </li>
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-center mb-4 text-white">Bienvenido a la Biblioteca</h1>
+  <p class="lead text-center text-light">
+    Este es el portal principal del sistema de gestión de libros y préstamos.
+    Usá el menú superior para navegar a cada módulo.
+  </p>
+{% endblock %}

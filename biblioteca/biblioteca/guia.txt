@@ -1,0 +1,32 @@
+1) armar y activar ENTORNO VIRTUAL
+>python -m venv venv
+>venv/Scripts/activate
+
+2) Instalo DJANGO
+(venv)>pip install django 
+
+3) Armo el proyecto (webapp) y me muevo dentro de el
+(venv)>django-admin startproject biblioteca
+
+4) Armar las app (modulos del proyecto)
+(venv)>python manage.py startapp gestion_libros
+(venv)>python manage.py startapp gestion_prestamos
+Y registramos apps en settings.py + donde encontrar templates [BASE_DIR / "templates"]
+
+5) Armo carpetas y archivos necesarios
+EN RAIZ: Creo /templates/dir_apps
+EN PROYECTO: Creo views.py
+EN APPS: Creo urls.py
+EN TEMPLATES: home.html
+
+6) Armo home.html
+
+7) Armo funcion home() dentro de views.py
+
+8) Armo el path para encontrar la funcion home() en urls.py
+
+9) Armar un base.html y ahora extiendo esa html en mi home.html
+
+10) Ahora necesito encontrar las vistas de mis apps, para ello configuro /urls.py  para que -> /app/urls.py
+
+11)

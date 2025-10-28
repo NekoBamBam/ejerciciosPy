@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}AUTORES{% endblock %}
+
+{% block navegation %}
+  <li class="nav-item">
+    <a class="btn btn-outline-light" href="{% url 'gestion_autores:crear_autor' %}">CREAR</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-outline-light" href="{% url 'gestion_autores:listar_autores' %}">LISTAR</a>
+  </li>
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-center mb-4 text-white">GESTION AUTORES</h1>
+  <p class="lead text-center text-light">
+    Este es el portal principal del módulo de gestión de autores.
+  </p>
+{% endblock %}

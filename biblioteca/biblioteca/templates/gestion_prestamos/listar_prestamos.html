@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Biblioteca: LISTAR PRESTAMOS{% endblock %}
+
+{% block navegation %}
+  <li class="nav-item">
+    <a class="btn btn-outline-light" href="{% url 'gestion_prestamos:index_prestamos' %}">PRESTAMOS</a>
+  </li>
+{% endblock %}
+
+{% block content %}
+    Bienvenido a la página de listar de prestamos.
+{% endblock %} 

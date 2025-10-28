@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Biblioteca: CREAR PRETAMOS{% endblock %}
+
+{% block navegation %}
+  <li class="nav-item">
+    <a class="btn btn-outline-light" href="{% url 'gestion_prestamos:index_prestamos' %}">PRESTAMOS</a>
+  </li>
+{% endblock %}
+
+
+{% block content %}
+  <h1 class="h3 mb-3">Nuevo préstamo</h1>
+
+  {% if messages %}
+    <div class="mb-2">
+      {% for m in messages %}<div class="alert alert-success">{{ m }}</div>{% endfor %}
+    </div>
+  {% endif %}
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="row g-3">
+      {% for field in form %}
+        <div class="col-md-6">
+          <label class="form-label">{{ field.label }}{% if field.field.required %} *{% endif %}</label>
+          {{ field }}
+          {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+          {% for err in field.errors %}<div class="text-danger small">{{ err }}</div>{% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="mt-4">
+      <button class="btn btn-primary">Guardar</button>
+      <a class="btn btn-outline-light" href="{% url 'home' %}">Cancelar</a>
+    </div>
+  </form>
+{% endblock %}

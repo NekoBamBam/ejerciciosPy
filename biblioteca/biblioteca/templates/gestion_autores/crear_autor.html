@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Biblioteca: CREAR AUTOR{% endblock %}
+
+{% block navegation %}
+  <li class="nav-item">
+    <a class="btn btn-outline-light" href="{% url 'gestion_autores:index_autores' %}">AUTORES</a>
+  </li>
+{% endblock %}
+
+{% block content %}
+    <form method="post" novalidate>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %} 
