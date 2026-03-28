@@ -1,1 +1,8 @@
-emi re trolazo
+tp02
+setter solo para el alias
+nrocuenta 14 dígitos exactos
+cbu 22 dígitos exactos
+alias 6-20 chars
+titular no vacio
+cuil 11 dígitos
+empezar:
