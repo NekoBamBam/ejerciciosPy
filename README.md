@@ -5,5 +5,6 @@ El objetivo es compartir código claro, ejemplos prácticos y ejercicios que sir
 
 ---
 
-## 📚 Facultad
+## 📚 Facultad 
 <img src="src/logo-utnlp.png" alt="Logo de la Facultad" width="200">
+## 💻 Practicas Online
